@@ -16,9 +16,11 @@ const Formulario = ({handleAgregarProducto}) => {
     const handleSubmit = (e) => {
         e.preventDefault() // Detengo el comportamiento por defecto
         console.log('Se controla la informacion y se envia...');
-
+         
         handleAgregarProducto(form)  // <- recibo informacion del nuevo producto
+        handleReset();
     }
+
     const handleChange = (e) => {
         const formuModificado = {
             ...form,
