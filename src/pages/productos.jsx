@@ -9,6 +9,20 @@ const Productos = () => {
   console.log(DB) /* un array de productos JS */ //<--- Tabla producto
   const [productos, setProductos] = useState(DB) //<--- Tabla producto
 
+  // * CRUD ->
+  // * C: -> Create
+    const handleAgregarProducto = () => {
+
+    }
+  // * U: -> Update
+    const handleEditarProducto = () => {
+
+    }
+  // * D: -> Delete  
+    const handleBorrarProducto = () => {
+
+    }    
+
   return (
     <>
         <Formulario />
