@@ -1,19 +1,41 @@
+import { useState } from "react";
 
 const Formulario = () => {
+
+    const formInicial = {
+        nombre: '',
+        categoria: '',
+        precio: 0
+
+    }
+
+    const [form, setForm] = useState(formInicial)
+    console.log(form);
+
     // * Captura de datos controlada
-    const handleSubmit = () => {
-
+    const handleSubmit = (e) => {
+        e.preventDefault() // Detengo el comportamiento por defecto
+        console.log('Se controla la informacion y se envia...');
     }
-    const handleChange = () => {
-
+    const handleChange = (e) => {
+        const formuModificado = {
+            ...form,
+            [e.target.name]:e.target.value
+        }
+        console.log(formuModificado); // <--- clon de form
+        setForm(formuModificado)
+     
     }
+
     const handleReset = () => {
-
+        setForm(formInicial)
     }
   return (
     <>
         <h2 className="text-2xl font-semibold mb-2">Formulario de carga y edición</h2>
-        <form className="border border-green-500 rounded-2xl w-full max-w-md px-6 py-4 mb-10">
+        <form onSubmit={handleSubmit}
+         className="border border-green-500 rounded-2xl w-full max-w-md px-6 py-4 mb-10"
+        >
 
         {/* Campo Nombre */}
         <div className="mb-4">
@@ -29,6 +51,8 @@ const Formulario = () => {
                 name="nombre"
                 placeholder="Escriba el nombre del producto. Ej: PC, Notebook"
                 className="w-full px-3 py-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500" 
+                value={form.nombre} // Conecto el valor del formulario con el nombre
+                onChange={handleChange}
             />
         </div>
         {/* Campo Categoría */}
@@ -45,6 +69,8 @@ const Formulario = () => {
                 name="categoria"
                 placeholder="Escriba la categoría del producto. Ej: Hogar, Electronica, Informatica"
                 className="w-full px-3 py-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500" 
+                value = {form.categoria}
+                onChange={handleChange}
             />
         </div>
         {/* Campo Precio */}
@@ -61,11 +87,13 @@ const Formulario = () => {
                 name="precio"
                 placeholder="Escriba el precio del producto. Ej: 125.20, 33.30"
                 className="w-full px-3 py-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500" 
+                value={form.precio}
+                onChange={handleChange}
             />
         </div>
 
         <div className="flex gap-3 mb-6">
-            <button type="reset" className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 cursor-pointer">Limpiar</button>
+            <button type="reset" onClick={handleReset} className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 cursor-pointer">Limpiar</button>
             <button type="submit" className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 cursor-pointer">Guardar</button>
         </div>
 
