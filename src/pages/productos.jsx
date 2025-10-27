@@ -1,8 +1,13 @@
+import Formulario from "../components/Formulario"
+import TablaProductos from "../components/TablaProductos"
 
-const productos = () => {
+const Productos = () => {
   return (
-    <div>productos</div>
+    <>
+        <Formulario />
+        <TablaProductos />
+    </>
   )
 }
 
-export default productos
+export default Productos
