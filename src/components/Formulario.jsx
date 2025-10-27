@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Formulario = () => {
+const Formulario = ({handleAgregarProducto}) => {
 
     const formInicial = {
         nombre: '',
@@ -16,6 +16,8 @@ const Formulario = () => {
     const handleSubmit = (e) => {
         e.preventDefault() // Detengo el comportamiento por defecto
         console.log('Se controla la informacion y se envia...');
+
+        handleAgregarProducto(form)  // <- recibo informacion del nuevo producto
     }
     const handleChange = (e) => {
         const formuModificado = {
@@ -23,8 +25,9 @@ const Formulario = () => {
             [e.target.name]:e.target.value
         }
         console.log(formuModificado); // <--- clon de form
-        setForm(formuModificado)
-     
+        setForm(formuModificado) 
+
+        //handleValidation(form)
     }
 
     const handleReset = () => {

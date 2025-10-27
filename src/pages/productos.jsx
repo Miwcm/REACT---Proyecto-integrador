@@ -11,7 +11,18 @@ const Productos = () => {
 
   // * CRUD ->
   // * C: -> Create
-    const handleAgregarProducto = () => {
+    const handleAgregarProducto = (nuevoProducto) => {
+
+      //Logica de cambio de estado (productos)
+      console.log(nuevoProducto);
+
+      //TODO:El ID -> Lo genera el backend
+
+      //productos.push(nuevoProducto)  //! NO SE PUEDE MODIFICAR DIRECTAMENTE
+
+    const nuevoEstadoProductos = [...productos, nuevoProducto] // <- clono el array y genero un nuevo array 
+    setProductos(nuevoEstadoProductos)
+      
 
     }
   // * U: -> Update
@@ -25,7 +36,7 @@ const Productos = () => {
 
   return (
     <>
-        <Formulario />
+        <Formulario handleAgregarProducto={handleAgregarProducto}/>
         <TablaProductos productos={productos}/>
     </>
   )
