@@ -1,10 +1,16 @@
+import handleNotificacion from "../utils/handle-notificacion"
 
 const ItemProducto = ({prod, handleBorrarProducto}) => { // props = { prod }
     console.log(prod) // { nombre, categoria, precio }
 
     const handleBorrar = (id) => {
-      console.log(id);
-      handleBorrarProducto(id)
+      //console.log(id);
+
+      handleNotificacion (() => {
+        handleBorrarProducto(id)
+      })
+      
+
     }
 
     const handleEditar = () => {
