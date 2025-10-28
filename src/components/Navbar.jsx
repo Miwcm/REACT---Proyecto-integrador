@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import links from "../constants/item-nav";
 import ItemMenu from "./ItemMenu";
-import { NavLink } from "react-router";
 
 const Navbar = () => {
 

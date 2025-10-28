@@ -1,8 +1,7 @@
 //rafce
 
 import { BrowserRouter } from "react-router"
-import Padre from "./components/donde-vive-estado/Padre"
-import Rutas from "./routes/Rutas"
+import Rutas from "./routes/rutas"
 import Navbar from "./components/Navbar"
 
 const App = () => {
