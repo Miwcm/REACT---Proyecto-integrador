@@ -1,45 +1,52 @@
-import { useState } from "react";
+import { useState } from "react"
 
-const Formulario = ({handleAgregarProducto}) => {
+const Formulario = ( { handleAgregarProducto } ) => { // props = { handleAgregarProducto }
 
     const formInicial = {
         nombre: '',
         categoria: '',
         precio: 0
-
     }
 
-    const [form, setForm] = useState(formInicial)
-    console.log(form);
+   const [form, setForm] = useState(formInicial)
+   console.log(form) // { nombre: '', categoria: '', precio: 0 }
 
-    // * Captura de datos controlada
-    const handleSubmit = (e) => {
-        e.preventDefault() // Detengo el comportamiento por defecto
-        console.log('Se controla la informacion y se envia...');
-         
-        handleAgregarProducto(form)  // <- recibo informacion del nuevo producto
-        handleReset();
+  // Captura de datos controlada.
+  const handleSubmit = (e) => {
+    e.preventDefault() // <--- detengo el comportamiento por defecto
+    console.log('Se controla la información y se envía...')
+
+    handleAgregarProducto(form)
+    handleReset()
+  }
+
+  const handleChange = (e) => {
+    console.log(e.target.name) // nombre: 
+    console.log(e.target.value) // M
+
+    const formuModificado = {
+        ...form,        
+        [e.target.name]: e.target.value
     }
+    //debugger
+    console.log(formuModificado) // <---- un clon de form
 
-    const handleChange = (e) => {
-        const formuModificado = {
-            ...form,
-            [e.target.name]:e.target.value
-        }
-        console.log(formuModificado); // <--- clon de form
-        setForm(formuModificado) 
+    setForm(formuModificado)
 
-        //handleValidation(form)
-    }
+    // handleValidation(form)
 
-    const handleReset = () => {
-        setForm(formInicial)
-    }
+  }
+
+  const handleReset = () => {
+    setForm(formInicial)
+  }
+
   return (
     <>
         <h2 className="text-2xl font-semibold mb-2">Formulario de carga y edición</h2>
-        <form onSubmit={handleSubmit}
-         className="border border-green-500 rounded-2xl w-full max-w-md px-6 py-4 mb-10"
+        <form 
+            onSubmit={handleSubmit} 
+            className="border border-green-500 rounded-2xl w-full max-w-md px-6 py-4 mb-10"
         >
 
         {/* Campo Nombre */}
@@ -56,7 +63,7 @@ const Formulario = ({handleAgregarProducto}) => {
                 name="nombre"
                 placeholder="Escriba el nombre del producto. Ej: PC, Notebook"
                 className="w-full px-3 py-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500" 
-                value={form.nombre} // Conecto el valor del formulario con el nombre
+                value={form.nombre}
                 onChange={handleChange}
             />
         </div>
@@ -74,7 +81,7 @@ const Formulario = ({handleAgregarProducto}) => {
                 name="categoria"
                 placeholder="Escriba la categoría del producto. Ej: Hogar, Electronica, Informatica"
                 className="w-full px-3 py-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500" 
-                value = {form.categoria}
+                value={form.categoria}
                 onChange={handleChange}
             />
         </div>
@@ -98,8 +105,8 @@ const Formulario = ({handleAgregarProducto}) => {
         </div>
 
         <div className="flex gap-3 mb-6">
-            <button type="reset" onClick={handleReset} className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 cursor-pointer">Limpiar</button>
-            <button type="submit" className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 cursor-pointer">Guardar</button>
+            <button onClick={handleReset} type="reset" className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 cursor-pointer">Limpiar</button>
+            <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 cursor-pointer">Guardar</button>
         </div>
 
         </form>

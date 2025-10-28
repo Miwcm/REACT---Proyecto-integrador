@@ -1,12 +1,9 @@
-
 import ItemProducto from "./ItemProducto"
 
+const TablaProductos = ({ productos, handleBorrarProducto }) => {
 
-const TablaProductos = ({productos, handleBorrarProducto}) => {
-    
-    
     console.log(productos) /* un array de productos de React (reactivo) */
-
+    
   return (
     <>
         <h2>Listado de productos</h2>
